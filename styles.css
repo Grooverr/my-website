@@ -1,2 +1,87 @@
-body { font-family: system-ui, Arial, sans-serif; margin: 2rem; }
-h1 { margin: 0 0 1rem; }
+:root{
+	--bg:#ffffff;
+	--card:#f8fafc;
+	--text:#1e3a5f;
+	--muted:#64748b;
+	--accent:#2563eb;
+	--accent-light:#60a5fa;
+	--accent-dark:#1e40af;
+	--border:#e2e8f0;
+	--glass: rgba(37,99,235,0.05);
+	--radius:12px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background: radial-gradient(1200px 400px at 10% 10%, var(--glass), transparent), var(--bg);
+	color:var(--text);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+.container{max-width:1100px;margin:0 auto;padding:24px}
+
+.nav{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:12px 0}
+.brand{font-weight:700;color:var(--accent-dark);font-size:1.1rem}
+.nav-links{list-style:none;display:flex;gap:12px;margin:0;padding:0}
+.nav-links a{color:var(--text);text-decoration:none;padding:8px;border-radius:8px}
+.nav-links a:hover{color:var(--accent);background:var(--glass)}
+.nav-toggle{display:none;background:transparent;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:8px}
+
+/* Skip link for keyboard users */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:var(--card);color:#fff;border-radius:8px;z-index:999}
+
+/* Focus styles */
+a:focus, .nav-toggle:focus, .project-link:focus, .btn:focus{outline:2px solid rgba(124,92,255,0.6);outline-offset:2px}
+
+.hero{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:center;padding:36px 0}
+.hero-content h1{margin:0;font-size:2.1rem}
+.tagline{color:var(--muted);margin-top:8px}
+.hero-illus{width:100%;max-width:320px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.6)}
+.hero-actions{margin-top:18px;display:flex;gap:12px}
+.btn{background:linear-gradient(180deg,var(--accent),var(--accent-dark));color:white;padding:10px 14px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--accent)}
+
+.card{background:var(--card);padding:20px;border-radius:var(--radius);margin-bottom:18px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.about p{color:var(--muted);line-height:1.6}
+.skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;padding:0;list-style:none}
+.skills li{background:var(--glass);padding:8px 10px;border-radius:8px;color:var(--text);font-size:0.9rem}
+
+.projects .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.project{padding:14px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.project h3{margin:0 0 8px}
+.project p{margin:0 0 12px;color:var(--muted);font-size:0.95rem}
+.project-link{color:var(--accent);text-decoration:none;font-weight:600}
+
+.footer{padding:24px 0;color:var(--muted);font-size:0.95rem;border-top:1px solid var(--border)}
+.footer-content{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.copyright{margin:0}
+.social-links{display:flex;gap:12px;align-items:center}
+.social-link{color:var(--muted);transition:color 0.2s,transform 0.2s;display:inline-flex}
+.social-link:hover{color:var(--accent);transform:translateY(-1px)}
+.social-link svg{vertical-align:middle}
+
+/* Responsive */
+@media (max-width:900px){
+	.hero{grid-template-columns:1fr;gap:18px}
+	.hero-illus{max-width:240px}
+	.projects .project-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:600px){
+	.container{padding:16px}
+	.nav-toggle{display:inline-block}
+	.nav-links{display:none;position:absolute;right:16px;top:56px;background:var(--card);padding:8px;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.6);min-width:160px}
+	.nav-links[data-state="open"]{display:flex;flex-direction:column}
+	.nav-links li{margin:6px 0}
+	.projects .project-grid{grid-template-columns:1fr}
+}
+
+/* Small tweaks */
+a{color:inherit}
+h1,h2,h3{color:#f4f7fb}
+
